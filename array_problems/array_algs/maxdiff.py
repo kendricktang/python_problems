@@ -3,7 +3,7 @@ import numpy as np
 def maxdiff(arr):
     """Calculates the max arr[j]-arr[i] where i<j"""
     maximum_diff = 0
-    if len(arr) <= 1:
+    if not arr:
         return maximum_diff
 
     min_val = arr[0]
@@ -16,7 +16,7 @@ def maxdiff(arr):
 def maxdiff_2(arr):
     """Calculates the max (arr[m]-arr[n])+(arr[j]-arr[i]) where m<n<i<j"""
     maxsumdiff = 0
-    if len(arr) > 0:
+    if arr:
         diffs_lower = [0]*len(arr)
         min_val = arr[0]
         for i in xrange(len(arr)-1):
@@ -48,3 +48,4 @@ def maxdiff_k(arr, k):
             j += 1
             sign *= -1
     return sum_of_k_diffs[-1]
+
