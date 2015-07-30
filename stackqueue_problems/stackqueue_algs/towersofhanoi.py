@@ -35,24 +35,29 @@ def towersofhanoi(size, suppress = False):
     target = TowerOfHanoi("Second")
     helper = TowerOfHanoi("Third")
     
-    towersofhanoi_helper(current, target, helper, size, suppress)    
+    movecount = towersofhanoi_helper(current, target, helper, size, 0, suppress)    
     
-    return target
+    return target, movecount
 
-def towersofhanoi_helper(current, target, helper, n, suppress):
+def towersofhanoi_helper(current, target, helper, n, movecount, suppress):
     """Recursive helper for towersofhanoi"""
     if n == 1:
         val = current.pop()
         target.push(val)
+        movecount += 1
         if not suppress:
             print "From: " + current.name + ", Target: " + target.name + ", val: %d" % val
+        return movecount
     else:
-        towersofhanoi_helper(current, helper, target, n-1, suppress)
+        towersofhanoi_helper(current, helper, target, n-1, movecount, suppress)
         val = current.pop()
         target.push(val)
+        movecount += 1
         if not suppress:
             print "From: " + current.name + ", Target: " + target.name + ", val: %d" % val
-        towersofhanoi_helper(helper, target, current, n-1, suppress)
+        towersofhanoi_helper(helper, target, current, n-1, movecount, suppress)
+        return movecount
+    
 
 if __name__ == "__main__":
     towersofhanoi(4)
