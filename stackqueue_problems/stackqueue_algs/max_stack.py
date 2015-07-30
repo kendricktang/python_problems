@@ -1,34 +1,4 @@
-class Stack(object):
-    """Regular Stack object. First-in-last-out."""
-    
-    def __init__(self, val):
-        """Initializer with single value."""
-        self.top = LinkedList(val)
-    
-    @classmethod
-    def fromarray(cls, array):
-        """Initializer with array. Highest index will be at the top."""
-        if array:
-            maxstack = cls(array[0])
-            for i in xrange(1, len(array)):
-                maxstack.push(array[i])
-            return maxstack
-        
-    def pop(self):
-        """Pops off the top value of the stack."""
-        if self.top:
-            val = self.top.val
-            self.top = self.top.next
-            return val            
-        
-    def push(self, val):
-        """Pushes on a new value to the top of the stack."""
-        self.top = LinkedList(val, next = self.top)
-    
-    def isempty(self):
-        """Typical isempty method: checks if the stack is empty."""
-        return self.top.next
-
+from stack import Stack
 
 class MaxStack(Stack):
     def __init__(self, val):
@@ -81,10 +51,3 @@ class MaxStackAlt(Stack):
     def getmax(self):
         """Returns the maximum value in the stack."""
         return self.maxstack.top.val[0]
-
-class LinkedList(object):
-    """A singley-linked list."""
-    def __init__(self, val, next=None):
-        """A simple initializer for the LinkedList class."""
-        self.val = val
-        self.next = next
