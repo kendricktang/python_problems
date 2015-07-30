@@ -8,16 +8,20 @@ class TestTowersOfHanoi(unittest.TestCase):
     def test_3(self):
         """Test size 3 towers of hanoi"""
         size = 3
+        targ, movecount = toh(size, suppress = True)
         self.assertEqual(
             [i for i in xrange(1,size+1)], 
-            toh(size, suppress = True).toarray())
+            targ.toarray())
+        self.assertEqual(2**size-1, movecount)
 
     def test_15(self):
-        size = 15
         """Test size 15 towers of hanoi"""
+        size = 15
+        targ, movecount = toh(size, suppress = True)
         self.assertEqual(
-            [i for i in xrange(1,size+1)],
-            toh(size, suppress = True).toarray())
+            [i for i in xrange(1,size+1)], 
+            targ.toarray())
+        self.assertEqual(2**size-1, movecount)
 
 if __name__ == '__main__':
     unittest.main()
