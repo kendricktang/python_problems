@@ -6,12 +6,12 @@ def mod_n_sum(A):
         return A
 
     # Bin i into mod_n_sum[[sum mod n of A[0:i]]
-    n = len(A)
     mod_n = defaultdict(list, [])
     partial_sums = partial_sum_mod_n(A)
-    i = 0
-    while i < n:
-        mod_n_sum = partial_sums.next()
+    
+    # Due to early return statements, this loop is guaranteed to break.
+    while True:
+        mod_n_sum, i = partial_sums.next()
 
         # Early return for sum A[0:i] == 0 mod n
         if mod_n_sum == 0:
@@ -22,7 +22,6 @@ def mod_n_sum(A):
             return (mod_n[mod_n_sum][0] + 1, i + 1)
 
         mod_n[mod_n_sum].append(i)
-        i += 1
 
 
 def partial_sum_mod_n(A):
@@ -31,5 +30,5 @@ def partial_sum_mod_n(A):
     sum = 0
     while i < n:
         sum = (sum + A[i]) % n
-        yield sum
+        yield sum, i
         i += 1
