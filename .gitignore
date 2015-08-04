@@ -1,5 +1,2 @@
-# temporary files
-*~
-
 # compiled python files 
-**/*.py[cod~]
+**/*.py[cod]
