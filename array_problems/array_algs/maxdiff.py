@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def maxdiff(arr):
     """Calculates the max arr[j]-arr[i] where i<j"""
     maximum_diff = 0
@@ -12,6 +13,7 @@ def maxdiff(arr):
         maximum_diff = max(val-min_val, maximum_diff)
 
     return maximum_diff
+
 
 def maxdiff_2(arr):
     """Calculates the max (arr[m]-arr[n])+(arr[j]-arr[i]) where m<n<i<j"""
@@ -32,6 +34,7 @@ def maxdiff_2(arr):
 
     return maxsumdiff
 
+
 def maxdiff_k(arr, k):
     """Calculates the maximum sum of k differences"""
     sum_of_k_diffs = np.array([float('-inf')]*(2*k))
@@ -48,4 +51,3 @@ def maxdiff_k(arr, k):
             j += 1
             sign *= -1
     return sum_of_k_diffs[-1]
-

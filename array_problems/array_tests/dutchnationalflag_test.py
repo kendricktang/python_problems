@@ -1,6 +1,7 @@
 import unittest
 from array_algs.dutchnationalflag import dutchnationalflag as dnf
 
+
 class TestDutchNationalFlag(unittest.TestCase):
     """Test suite for dutchnationalflag"""
 
@@ -43,6 +44,7 @@ class TestDutchNationalFlag(unittest.TestCase):
         pivot = array[pivotindex]
         dnf(array, pivotindex)
         self.assertTrue(is_sorted(map(lambda x: cmp(x, pivot), array)))
+
 
 def is_sorted(array):
     """Checks to see if an array is sorted"""
