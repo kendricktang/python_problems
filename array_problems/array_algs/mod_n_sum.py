@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 def mod_n_sum(A):
     """Returns a 2-tuple (a,b) where sum(A[a:b]) == 0 mod n."""
     if not A:
@@ -7,12 +8,7 @@ def mod_n_sum(A):
 
     # Bin i into mod_n_sum[[sum mod n of A[0:i]]
     mod_n = defaultdict(list, [])
-    partial_sums = partial_sum_mod_n(A)
-    
-    # Due to early return statements, this loop is guaranteed to break.
-    while True:
-        mod_n_sum, i = partial_sums.next()
-
+    for mod_n_sum, i in partial_sum_mod_n(A):
         # Early return for sum A[0:i] == 0 mod n
         if mod_n_sum == 0:
             return (0, i + 1)
@@ -25,10 +21,12 @@ def mod_n_sum(A):
 
 
 def partial_sum_mod_n(A):
+    """Generator which yields the partial sum,
+    and the index at which it was summed to
+    """
+    sum_, i = 0, 0
     n = len(A)
-    i = 0
-    sum = 0
-    while i < n:
-        sum = (sum + A[i]) % n
-        yield sum, i
+    for x in A:
+        sum_ = (sum_ + x) % n
+        yield sum_, i
         i += 1
