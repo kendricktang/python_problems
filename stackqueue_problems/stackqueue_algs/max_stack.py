@@ -1,18 +1,19 @@
 from stack import Stack
 
+
 class MaxStack(Stack):
     def __init__(self, val):
         """Initializes a stack which has a getmax O(1) get max method."""
-        super(MaxStack, self).__init__((val,val))
-    
+        super(MaxStack, self).__init__((val, val))
+
     def push(self, val):
         """Pushes a new value on top of the stack."""
         super(MaxStack, self).push((val, max(self.top.val[1], val)))
-    
+
     def pop(self):
         val = super(MaxStack, self).pop()
         return val[0]
-    
+
     def getmax(self):
         """Returns the maximum value in the stack."""
         if self.top:
@@ -22,7 +23,7 @@ class MaxStack(Stack):
 class MaxStackAlt(Stack):
     def __init__(self, val):
         """Initializes a stack which has a getmax O(1) get max method."""
-        self.maxstack = Stack([val,1])
+        self.maxstack = Stack([val, 1])
         super(MaxStackAlt, self).__init__(val)
 
     def push(self, val):
@@ -31,10 +32,10 @@ class MaxStackAlt(Stack):
             if val == self.maxstack.top.val[0]:
                 self.maxstack.top.val[1] += 1
             elif val > self.maxstack.top.val[0]:
-                self.maxstack.push([val,1])
+                self.maxstack.push([val, 1])
         else:
-            self.maxstack.push([val,1])
-        
+            self.maxstack.push([val, 1])
+
         super(MaxStackAlt, self).push(val)
 
     def pop(self):
@@ -45,9 +46,9 @@ class MaxStackAlt(Stack):
                     self.maxstack.top.val[1] -= 1
                 else:
                     self.maxstack.pop()
-            
+
             return super(MaxStackAlt, self).pop()
-    
+
     def getmax(self):
         """Returns the maximum value in the stack."""
         return self.maxstack.top.val[0]

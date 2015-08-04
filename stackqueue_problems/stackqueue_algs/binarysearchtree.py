@@ -1,40 +1,39 @@
 from nodes import BinaryNode
 from stack import Stack
 
+
 class BinarySearchTree(object):
     """A Binary search tree: node.left < node <= node.right
-    
+
     Only add methods are implemented. Does not implement has, or delete.
     """
-    
+
     def __init__(self, val):
         """Initiate a BST with a single value"""
         self.top = BinaryNode(val)
-    
+
     @classmethod
     def fromarray(cls, array):
         """Initiate a BST with an array"""
         bst = cls(array[0])
-        for i in xrange(1,len(array)):
+        for i in xrange(1, len(array)):
             bst.add(array[i])
         return bst
-    
+
     def add(self, val):
         """Search the BST and add a node to the BST with val"""
         node = self.top
         while node.hasnext(val):
             node = node.getnext(val)
         node.setnext(val)
-        
-        from stack import Stack
-    
+
     @staticmethod
     def print_BST(binarynode):
         """Prints a subset of a BST without recursion.
         This function will print the value at node and the value at
         all of node's children in sorted order.
         """
-        
+
         stack = Stack()
         curr = binarynode
         print "<",
@@ -50,7 +49,7 @@ class BinarySearchTree(object):
                 if not stack.isempty() or curr:
                     print ',',
         print ">"
-    
+
     @staticmethod
     def print_BST_test(binarynode):
         """This should be identical to print_BST in every way

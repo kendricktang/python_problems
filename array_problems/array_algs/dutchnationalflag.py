@@ -19,6 +19,6 @@ def dutchnationalflag(A, i):
             swap(A, front+1, end)
             end -= 1
 
+
 def swap(A, i, j):
     A[i], A[j] = A[j], A[i]
-
