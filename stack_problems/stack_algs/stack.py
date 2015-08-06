@@ -58,3 +58,20 @@ class Stack(object):
             arr.append(curr.val)
             curr = curr.next
         return arr
+
+    def gettop(self):
+        return self.top.val
+
+    def sort(self):
+        if not self.isempty():
+            x = self.pop()
+            self.sort()
+            self.insertsorted(x)
+
+    def insertsorted(self, x):
+        if self.isempty() or self.gettop() <= x:
+            self.push(x)
+        else:
+            topele = self.pop()
+            self.insertsorted(x)
+            self.push(topele)
