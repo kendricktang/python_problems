@@ -1,9 +1,9 @@
 import unittest
 import numpy as np
-from stackqueue_algs.binarysearchtree import BinarySearchTree as BST
+from stack_algs.binarysearchtree import BinarySearchTree as BST
 
 
-class TestBinarySearchTree(unittest.TestCase):
+class TestBinarySearch(unittest.TestCase):
     """Test suite for BinarySearchTree"""
 
     def test_single_case(self):

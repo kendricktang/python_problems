@@ -68,6 +68,7 @@ class Stack(object):
             self.sort()
             self.insertsorted(x)
 
+
     def insertsorted(self, x):
         if self.isempty() or self.gettop() <= x:
             self.push(x)

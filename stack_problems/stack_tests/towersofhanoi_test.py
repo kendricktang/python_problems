@@ -1,6 +1,5 @@
 import unittest
-from stackqueue_algs.towersofhanoi import towersofhanoi as toh
-# from stackqueue_algs.towersofhanoi import TowerOfHanoi as TOH
+from stack_algs.towersofhanoi import towersofhanoi as toh
 
 
 class TestTowersOfHanoi(unittest.TestCase):

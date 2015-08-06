@@ -1,6 +1,7 @@
 import unittest
-from stackqueue_algs.max_stack import MaxStack as ms
-from stackqueue_algs.max_stack import MaxStackAlt as msa
+from stack_algs.max_stack import MaxStack as ms
+from stack_algs.max_stack import MaxStackAlt as msa
+
 
 class TestMaxStack(unittest.TestCase):
     """Test suite for MaxStack"""
@@ -30,10 +31,10 @@ class TestMaxStack(unittest.TestCase):
         self.assertEqual(maxstack.pop(), 8)
         self.assertEqual(maxstack.pop(), 7)
         self.assertEqual(maxstack.getmax(), 6)
-    
+
     def test_pop(self):
         """Test the ability to maintain knowledge of the maximum"""
-        stack = [1,20,1,1,30,30,1,1,100,1]
+        stack = [1, 20, 1, 1, 30, 30, 1, 1, 100, 1]
         maxstack = ms.fromarray(stack)
         self.assertEqual(maxstack.getmax(), 100)
         self.assertEqual(maxstack.pop(), 1)
@@ -96,10 +97,10 @@ class TestMaxStackAlt(unittest.TestCase):
         self.assertEqual(maxstack.pop(), 8)
         self.assertEqual(maxstack.pop(), 7)
         self.assertEqual(maxstack.getmax(), 6)
-    
+
     def test_pop(self):
         """Test the ability to maintain knowledge of the maximum"""
-        stack = [1,20,1,1,30,30,1,1,100,1]
+        stack = [1, 20, 1, 1, 30, 30, 1, 1, 100, 1]
         maxstack = msa.fromarray(stack)
         self.assertEqual(maxstack.getmax(), 100)
         self.assertEqual(maxstack.pop(), 1)

@@ -1,5 +1,5 @@
 import unittest
-from stackqueue_algs.stack import Stack as S
+from stack_algs.stack import Stack as S
 
 
 class StackSortTest(unittest.TestCase):
