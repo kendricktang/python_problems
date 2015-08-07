@@ -2,13 +2,19 @@ from stack import Stack
 
 
 class MaxStack(Stack):
-    def __init__(self, val):
+    def __init__(self, val=None):
         """Initializes a stack which has a getmax O(1) get max method."""
-        super(MaxStack, self).__init__((val, val))
+        if val:
+            super(MaxStack, self).__init__(val=(val, val))
+        else:
+            super(MaxStack, self).__init__()
 
     def push(self, val):
         """Pushes a new value on top of the stack."""
-        super(MaxStack, self).push((val, max(self.top.val[1], val)))
+        if self.isempty():
+            super(MaxStack, self).push((val, val))
+        else:
+            super(MaxStack, self).push((val, max(self.top.val[1], val)))
 
     def pop(self):
         val = super(MaxStack, self).pop()
@@ -16,6 +22,8 @@ class MaxStack(Stack):
 
     def getmax(self):
         """Returns the maximum value in the stack."""
+        if self.isempty():
+            return IndexError("Stack is empty")
         if self.top:
             return self.top.val[1]
 

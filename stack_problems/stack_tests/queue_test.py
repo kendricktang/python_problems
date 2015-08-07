@@ -24,6 +24,22 @@ class TestQueue(unittest.TestCase):
         q.enqueue("yay")
         self.assertEqual(q.dequeue(), "yay")
 
+    def test_max(self):
+        """Tests getmax functionality"""
+        q = Q()
+        q.enqueue(42)
+        q.enqueue(32)
+        q.enqueue(-100)
+        q.enqueue(41)
+
+        self.assertEqual(q.getmax(), 42)
+        q.dequeue()
+        self.assertEqual(q.getmax(), 41)
+        q.dequeue()
+        self.assertEqual(q.getmax(), 41)
+        q.dequeue()
+        self.assertEqual(q.getmax(), 41)
+
 
 if __name__ == '__main__':
     unittest.main()
