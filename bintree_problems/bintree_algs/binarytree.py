@@ -1,16 +1,18 @@
 class BinaryTreeNode(object):
     """A binary tree node. No parent pointer. No sorting restriction."""
 
-    def __init__(self, val, left=None, right=None):
+    def __init__(self, val=None, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
     def setleft(self, val):
-        self.left = BinaryTreeNode(val)
+        self.left = BinaryTreeNode(val=val)
+        return self.left
 
     def setright(self, val):
-        self.right = BinaryTreeNode(val)
+        self.right = BinaryTreeNode(val=val)
+        return self.right
 
     def inordertraversal(self):
         curr = self
@@ -60,30 +62,30 @@ class BinaryTreeNode(object):
 
         return max(leftheight, rightheight) + 1
 
-    def findkbalanceddescendent(self, k):
+    def findkunbalanceddescendent(self, k):
         numofnodes, unbalancednode = (
-            BinaryTreeNode._findkbalanceddescendent(self, k))
+            BinaryTreeNode._findkunbalanceddescendent(self, k))
         return unbalancednode
 
     @staticmethod
-    def _findkbalanceddescendent(node, k):
+    def _findkunbalanceddescendent(node, k):
         if not node:
             return 0, None
 
-        leftheight, unbalancednode = (
-            BinaryTreeNode._findkbalanceddescendent(node.left, k))
+        leftsize, unbalancednode = (
+            BinaryTreeNode._findkunbalanceddescendent(node.left, k))
         if unbalancednode:
             return 0, unbalancednode
 
-        rightheight, unbalancednode = (
-            BinaryTreeNode._findkbalanceddescendent(node.right, k))
+        rightsize, unbalancednode = (
+            BinaryTreeNode._findkunbalanceddescendent(node.right, k))
         if unbalancednode:
             return 0, unbalancednode
 
-        if abs(leftheight - rightheight) > k:
+        if abs(leftsize - rightsize) > k:
             return 0, node
 
-        return leftheight + rightheight + 1, None
+        return leftsize + rightsize + 1, None
 
     def issymmetric(self):
         return BinaryTreeNode._issymmetric(self.left, self.right)
@@ -94,6 +96,7 @@ class BinaryTreeNode(object):
             return True
 
         return (
+            leftside and rightside and
             leftside.val is rightside.val and
             BinaryTreeNode._issymmetric(leftside.left, rightside.right) and
             BinaryTreeNode._issymmetric(leftside.right, rightside.left))

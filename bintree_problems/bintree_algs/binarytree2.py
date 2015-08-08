@@ -4,17 +4,21 @@ from binarytree import BinaryTreeNode
 class BinaryTreeNode2(BinaryTreeNode):
     """Binary tree node with a parent pointer"""
 
-    def __init__(self, val, left=None, right=None, parent=None):
+    def __init__(self, val=None, left=None, right=None, parent=None):
         self.val = val
         self.left = left
         self.right = right
         self.parent = parent
 
     def setleft(self, val):
-        self.left = BinaryTreeNode2(val, left=None, right=None, parent=self)
+        self.left = BinaryTreeNode2(
+            val=val, left=None, right=None, parent=self)
+        return self.left
 
     def setright(self, val):
-        self.right = BinaryTreeNode2(val, left=None, right=None, parent=self)
+        self.right = BinaryTreeNode2(
+            val=val, left=None, right=None, parent=self)
+        return self.right
 
     def inordertraversal(self):
         curr = self
@@ -44,4 +48,6 @@ class BinaryTreeNode2(BinaryTreeNode):
                 next = curr.parent
             prev = curr
             curr = next
+        if s[-1] is ",":
+            return s[:-1]
         return s

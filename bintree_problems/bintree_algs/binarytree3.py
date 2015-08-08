@@ -4,30 +4,32 @@ from binarytree import BinaryTreeNode
 class BinaryTreeNode3(BinaryTreeNode):
     """Binary tree node with a size parameter"""
 
-    def __init__(self, val, left=None, right=None, size=1):
+    def __init__(self, val=None, left=None, right=None, size=1):
         self.val = val
         self.left = left
         self.right = right
         self.size = size
 
     def setleft(self, val):
-        self.left = BinaryTreeNode3(val)
+        self.left = BinaryTreeNode3(val=val)
+        return self.left
 
     def setright(self, val):
-        self.right = BinaryTreeNode3(val)
+        self.right = BinaryTreeNode3(val=val)
+        return self.right
 
     def fixsize(self):
         BinaryTreeNode3._fixsize(self)
 
     @staticmethod
     def _fixsize(node):
-        if not node.left and not node.right:
+        if not node:
             return 0
         else:
             node.size = (
                 1 + BinaryTreeNode3._fixsize(node.left) +
                 BinaryTreeNode3._fixsize(node.right))
-            return node.sizeB
+            return node.size
 
     def find_kth_node(self, k):
         if self.size < k:
