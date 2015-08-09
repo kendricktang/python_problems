@@ -1,6 +1,6 @@
 import unittest
 from bintree_algs.binarytree3 import BinaryTreeNode3 as BTN
-from bintree_algs.makebintree import makebintree as mbt
+from bintree_algs.makebintree import makefromstring as mfs
 
 
 class TestFindKUnbalancedDescendent(unittest.TestCase):
@@ -9,7 +9,7 @@ class TestFindKUnbalancedDescendent(unittest.TestCase):
     def test_singlecase(self):
         """Test a tree with just a root."""
         s = "42"
-        root = mbt(s, BTN)
+        root = mfs(s, BTN)
         root.fixsize()
         self.assertEqual(
             root.find_kth_node(1).val,
@@ -22,7 +22,7 @@ class TestFindKUnbalancedDescendent(unittest.TestCase):
     def test_rightonly(self):
         """Test a tree with only a right side."""
         s = "42[-100(12(10)[11(999)[17]])[32]]"
-        root = mbt(s, BTN)
+        root = mfs(s, BTN)
         root.fixsize()
         self.assertEqual(
             root.find_kth_node(1).val,
@@ -40,7 +40,7 @@ class TestFindKUnbalancedDescendent(unittest.TestCase):
     def test_leftonly(self):
         """Test a tree with only a left side."""
         s = "42(-100(12(10)[11[17[112233]]])[23])"
-        root = mbt(s, BTN)
+        root = mfs(s, BTN)
         root.fixsize()
         self.assertEqual(
             root.find_kth_node(1).val,
@@ -58,7 +58,7 @@ class TestFindKUnbalancedDescendent(unittest.TestCase):
     def test_strictrightonly(self):
         """Test a tree with only right children."""
         s = "1[2[3[4[5[6]]]]]"
-        root = mbt(s, BTN)
+        root = mfs(s, BTN)
         root.fixsize()
         self.assertEqual(
             root.find_kth_node(1).val,
@@ -73,7 +73,7 @@ class TestFindKUnbalancedDescendent(unittest.TestCase):
     def test_strictleftonly(self):
         """Test a tree with only left children."""
         s = "1(2(3(4(5(6)))))"
-        root = mbt(s, BTN)
+        root = mfs(s, BTN)
         root.fixsize()
         self.assertEqual(
             root.find_kth_node(1).val,
@@ -88,7 +88,7 @@ class TestFindKUnbalancedDescendent(unittest.TestCase):
     def test_bothchildren(self):
         """Test a tree which has both children."""
         s = "42(-100(12)[28])[100(2000(1)[2])[111]]"
-        root = mbt(s, BTN)
+        root = mfs(s, BTN)
         root.fixsize()
         self.assertEqual(
             root.find_kth_node(1).val,

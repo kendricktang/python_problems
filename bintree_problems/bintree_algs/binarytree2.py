@@ -51,3 +51,68 @@ class BinaryTreeNode2(BinaryTreeNode):
         if s[-1] is ",":
             return s[:-1]
         return s
+
+    def preordertraversal(self):
+        curr = self
+        prev = None
+        next = None
+        s = ''
+        while curr:
+            if not prev or prev.left is curr or prev.right is curr:
+                # if there is no previous, or previous is the parent of curr
+                s += str(curr.val)
+                s += ","
+
+                if curr.left:
+                    next = curr.left
+                elif curr.right:
+                    next = curr.right
+                else:
+                    next = curr.parent
+            elif curr.left is prev:
+                if curr.right:
+                    next = curr.right
+                else:
+                    next = curr.parent
+            else:
+                next = curr.parent
+            prev = curr
+            curr = next
+
+        if s[-1] is ",":
+            return s[:-1]
+        return s
+
+    def postordertraversal(self):
+        curr = self
+        prev = None
+        next = None
+        s = ''
+        while curr:
+            if not prev or prev.left is curr or prev.right is curr:
+                # if there is no previous, or previous is the parent of curr
+                if curr.left:
+                    next = curr.left
+                elif curr.right:
+                    next = curr.right
+                else:
+                    s += str(curr.val)
+                    s += ","
+                    next = curr.parent
+            elif curr.left is prev:
+                if curr.right:
+                    next = curr.right
+                else:
+                    s += str(curr.val)
+                    s += ","
+                    next = curr.parent
+            else:
+                s += str(curr.val)
+                s += ","
+                next = curr.parent
+            prev = curr
+            curr = next
+
+        if s[-1] is ",":
+            return s[:-1]
+        return s
