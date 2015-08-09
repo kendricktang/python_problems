@@ -5,22 +5,26 @@ class BinaryTreeNode2(BinaryTreeNode):
     """Binary tree node with a parent pointer"""
 
     def __init__(self, val=None, left=None, right=None, parent=None):
+        """Constructs a binary tree node with a parent pointer."""
         self.val = val
         self.left = left
         self.right = right
         self.parent = parent
 
-    def setleft(self, val):
+    def setleft(self, val=None):
+        """Creates a node and sets the left child to that value."""
         self.left = BinaryTreeNode2(
             val=val, left=None, right=None, parent=self)
         return self.left
 
-    def setright(self, val):
+    def setright(self, val=None):
+        """Creates a node and sets the right child to that value."""
         self.right = BinaryTreeNode2(
             val=val, left=None, right=None, parent=self)
         return self.right
 
     def inordertraversal(self):
+        """Returns a string containing the in order traversal of the root."""
         curr = self
         prev = None
         next = None
@@ -53,6 +57,7 @@ class BinaryTreeNode2(BinaryTreeNode):
         return s
 
     def preordertraversal(self):
+        """Returns a string containing the pre order traversal of the root."""
         curr = self
         prev = None
         next = None
@@ -84,6 +89,7 @@ class BinaryTreeNode2(BinaryTreeNode):
         return s
 
     def postordertraversal(self):
+        """Returns a string containing the post order traversal of the root."""
         curr = self
         prev = None
         next = None
