@@ -20,7 +20,7 @@ class BinaryTreeNode(object):
     def inordertraversal(self):
         """Returns a string representing the in-order traversal of this tree."""
         curr = self
-        s = ""
+        array = []
         while curr:
             if curr.left:
                 pre = curr.left
@@ -29,20 +29,16 @@ class BinaryTreeNode(object):
 
                 if pre.right:
                     pre.right = None
-                    s += str(curr.val)
+                    array.append(curr.val)
                     curr = curr.right
-                    if curr:
-                        s += ","
                 else:
                     pre.right = curr
                     curr = curr.left
 
             else:
-                s += str(curr.val)
+                array.append(curr.val)
                 curr = curr.right
-                if curr:
-                    s += ","
-        return s
+        return array
 
     def isbalanced(self):
         """Determines if the tree is balanced. A tree is balanced if the height

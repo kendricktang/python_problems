@@ -71,5 +71,61 @@ def _getindicesofparens(s):
 
 
 def makefromtraversals(BTN, inorder, preorder=None, postorder=None):
+    """Constructs a tree and returns the root if given an in-order traversal,
+    and either a preorder or post order traversal."""
+    root = BTN()
     if preorder:
-        pass
+        _makefrompretraversal(root, inorder, preorder)
+        return root
+    if postorder:
+        _makefromposttraversal(root, inorder, postorder)
+        return root
+    raise TypeError("Preorder or postorder must be valid.")
+
+
+def _makefrompretraversal(node, inorder, preorder):
+    """Recursive helper for makefromtraversals() using pre-order traversal."""
+    node.val = preorder[0]
+    nodeindex = inorder.index(node.val)
+
+    leftchild = inorder[:nodeindex]
+    rightchild = inorder[nodeindex+1:]
+
+    mysize = 1
+    if leftchild:
+        leftnode = node.setleft()
+        mysize += _makefrompretraversal(
+            leftnode, leftchild,
+            preorder[1:])
+
+    if rightchild:
+        rightnode = node.setright()
+        mysize += _makefrompretraversal(
+            rightnode, rightchild,
+            preorder[mysize:])
+    return mysize
+
+
+def _makefromposttraversal(node, inorder, postorder):
+    """Recursive helper for makefromtraversals() using post-order traversal."""
+    nodeval = postorder[-1]
+    node.val = int(nodeval)
+    nodeindex = inorder.index(nodeval)
+
+    leftchild = inorder[:nodeindex]
+    rightchild = inorder[nodeindex+1:]
+
+    mysize = 1
+    if rightchild:
+        rightnode = node.setright()
+        mysize += _makefromposttraversal(
+            rightnode, rightchild,
+            postorder[:-mysize])
+
+    if leftchild:
+        leftnode = node.setleft()
+        mysize += _makefromposttraversal(
+            leftnode, leftchild,
+            postorder[:-mysize])
+
+    return mysize

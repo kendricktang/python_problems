@@ -27,98 +27,86 @@ class BinaryTreeNode2(BinaryTreeNode):
         """Returns a string containing the in order traversal of the root."""
         curr = self
         prev = None
-        next = None
-        s = ''
+        nextnode = None
+        array = []
         while curr:
             if not prev or prev.left is curr or prev.right is curr:
                 # if there is no previous, or previous is the parent of curr
                 if curr.left:
-                    next = curr.left
+                    nextnode = curr.left
                 else:
-                    s += str(curr.val)
-                    s += ","
+                    array.append(curr.val)
                     if curr.right:
-                        next = curr.right
+                        nextnode = curr.right
                     else:
-                        next = curr.parent
+                        nextnode = curr.parent
             elif curr.left is prev:
-                s += str(curr.val)
-                s += ","
+                array.append(curr.val)
                 if curr.right:
-                    next = curr.right
+                    nextnode = curr.right
                 else:
-                    next = curr.parent
+                    nextnode = curr.parent
             else:
-                next = curr.parent
+                nextnode = curr.parent
             prev = curr
-            curr = next
-        if s[-1] is ",":
-            return s[:-1]
-        return s
+            curr = nextnode
+        return array
 
     def preordertraversal(self):
         """Returns a string containing the pre order traversal of the root."""
         curr = self
         prev = None
-        next = None
-        s = ''
+        nextnode = None
+        array = []
         while curr:
             if not prev or prev.left is curr or prev.right is curr:
                 # if there is no previous, or previous is the parent of curr
-                s += str(curr.val)
-                s += ","
+                array.append(curr.val)
 
                 if curr.left:
-                    next = curr.left
+                    nextnode = curr.left
                 elif curr.right:
-                    next = curr.right
+                    nextnode = curr.right
                 else:
-                    next = curr.parent
+                    nextnode = curr.parent
             elif curr.left is prev:
                 if curr.right:
-                    next = curr.right
+                    nextnode = curr.right
                 else:
-                    next = curr.parent
+                    nextnode = curr.parent
             else:
-                next = curr.parent
+                nextnode = curr.parent
             prev = curr
-            curr = next
+            curr = nextnode
 
-        if s[-1] is ",":
-            return s[:-1]
-        return s
+        return array
 
     def postordertraversal(self):
         """Returns a string containing the post order traversal of the root."""
         curr = self
         prev = None
-        next = None
-        s = ''
+        nextnode = None
+        array = []
         while curr:
             if not prev or prev.left is curr or prev.right is curr:
                 # if there is no previous, or previous is the parent of curr
                 if curr.left:
-                    next = curr.left
+                    nextnode = curr.left
                 elif curr.right:
-                    next = curr.right
+                    nextnode = curr.right
                 else:
-                    s += str(curr.val)
-                    s += ","
-                    next = curr.parent
+                    array.append(curr.val)
+                    nextnode = curr.parent
             elif curr.left is prev:
                 if curr.right:
-                    next = curr.right
+                    nextnode = curr.right
                 else:
-                    s += str(curr.val)
-                    s += ","
-                    next = curr.parent
+                    array.append(curr.val)
+                    nextnode = curr.parent
             else:
-                s += str(curr.val)
-                s += ","
-                next = curr.parent
+                array.append(curr.val)
+                nextnode = curr.parent
             prev = curr
-            curr = next
+            curr = nextnode
 
-        if s[-1] is ",":
-            return s[:-1]
-        return s
+        return array

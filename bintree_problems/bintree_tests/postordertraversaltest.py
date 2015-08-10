@@ -12,7 +12,7 @@ class TestPostOrderTraversal(unittest.TestCase):
         root = mfs(s, BTN)
         self.assertEqual(
             root.postordertraversal(),
-            "42")
+            [42])
 
     def test_rightonly(self):
         """Test a tree with only a right side."""
@@ -20,7 +20,7 @@ class TestPostOrderTraversal(unittest.TestCase):
         root = mfs(s, BTN)
         self.assertEqual(
             root.postordertraversal(),
-            "10,17,11,12,32,-100,42")
+            [10, 17, 11, 12, 32, -100, 42])
 
     def test_leftonly(self):
         """Test a tree with only a left side."""
@@ -28,7 +28,7 @@ class TestPostOrderTraversal(unittest.TestCase):
         root = mfs(s, BTN)
         self.assertEqual(
             root.postordertraversal(),
-            "10,17,11,12,23,-100,42")
+            [10, 17, 11, 12, 23, -100, 42])
 
     def test_bothchildren(self):
         """Test a tree which has both children."""
@@ -36,7 +36,7 @@ class TestPostOrderTraversal(unittest.TestCase):
         root = mfs(s, BTN)
         self.assertEqual(
             root.postordertraversal(),
-            "12,28,-100,111,100,42")
+            [12, 28, -100, 111, 100, 42])
 
 if __name__ == '__main__':
     unittest.main()
