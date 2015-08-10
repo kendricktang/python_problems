@@ -1,11 +1,11 @@
 import unittest
 from bintree_algs.binarytree2 import BinaryTreeNode2 as BTN
-from bintree_algs.makefrominordertraversal import makebintree as mbt
+from bintree_algs.makefrompreordertraversal import makebintree as mbt
 from bintree_algs.makebintree import makefromstring as mfs
 
 
-class TestMakeFromInorderTraversals(unittest.TestCase):
-    """Test suite for makefrominordertraversal.makebintree()."""
+class TestMakeFromPreorderTraversals(unittest.TestCase):
+    """Test suite for makefrompreordertraversal.makebintree()."""
 
     def test_singlecase(self):
         """Test a tree with just a root."""
@@ -14,8 +14,8 @@ class TestMakeFromInorderTraversals(unittest.TestCase):
         root = mbt(array)
         root_ = mfs(s, BTN)
         self.assertEqual(
-            root.inordertraversal(),
-            root_.inordertraversal())
+            root.preordertraversal(),
+            root_.preordertraversal())
         self.assertEqual(
             root.preordertraversal(),
             root_.preordertraversal())
@@ -32,8 +32,8 @@ class TestMakeFromInorderTraversals(unittest.TestCase):
         root = mbt(array)
         root_ = mfs(s, BTN)
         self.assertEqual(
-            root.inordertraversal(),
-            root_.inordertraversal())
+            root.preordertraversal(),
+            root_.preordertraversal())
         self.assertEqual(
             root.preordertraversal(),
             root_.preordertraversal())
@@ -50,8 +50,8 @@ class TestMakeFromInorderTraversals(unittest.TestCase):
         root = mbt(array)
         root_ = mfs(s, BTN)
         self.assertEqual(
-            root.inordertraversal(),
-            root_.inordertraversal())
+            root.preordertraversal(),
+            root_.preordertraversal())
         self.assertEqual(
             root.preordertraversal(),
             root_.preordertraversal())
@@ -68,8 +68,8 @@ class TestMakeFromInorderTraversals(unittest.TestCase):
         root = mbt(array)
         root_ = mfs(s, BTN)
         self.assertEqual(
-            root.inordertraversal(),
-            root_.inordertraversal())
+            root.preordertraversal(),
+            root_.preordertraversal())
         self.assertEqual(
             root.preordertraversal(),
             root_.preordertraversal())
