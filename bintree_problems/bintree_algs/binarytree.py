@@ -111,3 +111,23 @@ class BinaryTreeNode(object):
             leftside.val is rightside.val and
             BinaryTreeNode._issymmetric(leftside.left, rightside.right) and
             BinaryTreeNode._issymmetric(leftside.right, rightside.left))
+
+    def findnode(self, val):
+        """Finds the first occurence of the node with value val
+        in a preorder traversal."""
+        return BinaryTreeNode._findnode(self, val)
+
+    @staticmethod
+    def _findnode(curr, val):
+        """Recursive helper for findnode()"""
+        if not curr:
+            return None
+
+        if curr.val is val:
+            return curr
+
+        leftres = BinaryTreeNode._findnode(curr.left, val)
+        if leftres:
+            return leftres
+        rightres = BinaryTreeNode._findnode(curr.right, val)
+        return rightres

@@ -4,13 +4,13 @@ def lca(root, node1, node2):
     if node1 is node2:
         return node1
 
-    _lca(root, node1, node2)
+    return _lca(root, node1, node2)
 
 
 def _lca(curr, node1, node2):
     """Recursive helper for lca()."""
     if not curr:
-        # Did not find anything.
+        # Walked off of a leaf node! Did not find anything.
         return None
 
     if node1 is curr or node2 is curr:

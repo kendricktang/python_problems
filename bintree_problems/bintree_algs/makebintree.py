@@ -26,7 +26,11 @@ def _makefromstring(node, s):
     node.val = int(s[:children_ind])
 
     ind_right = _getindicesofparens(s[children_ind:])
-    ind_right += children_ind
+    try:
+        ind_right += children_ind
+    except TypeError:
+        print s
+
     if s[children_ind] is '[':
         # There is no left child
         rightnode = node.setright(None)
