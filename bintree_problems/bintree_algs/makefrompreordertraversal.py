@@ -1,11 +1,10 @@
-from stack_algs.stack import Stack
 from binarytree2 import BinaryTreeNode2 as BST
 
 
 def makebintree(preorder):
     """Makes a binary tree given an pre-order traversal which indicates the
     children of leaf nodes as None's."""
-    nodestack = Stack()
+    nodestack = []
     preorder.reverse()
     for element in preorder:
         if element:
@@ -20,8 +19,8 @@ def makebintree(preorder):
                 node.right = rightchild
                 rightchild.parent = node
 
-            nodestack.push(node)
+            nodestack.append(node)
         else:
-            nodestack.push(None)
+            nodestack.append(None)
     preorder.reverse()
     return nodestack.pop()
