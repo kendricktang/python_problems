@@ -18,13 +18,13 @@ class MazeSolver(object):
         self.height = len(maze[0])
 
     def solvemaze(self, start, end):
-        """start and end must be coordinates."""
+        """Finds a path (if it exists), using DFS.
+        Start and end must be coordinates."""
         stack = [[start]]
         while stack:
             path = stack.pop()
             vertex = path[-1]
             for nextvert in self.findneighbors(vertex) - set(path):
-                print nextvert
                 if nextvert == end:
                     return path + [nextvert]
                 else:
