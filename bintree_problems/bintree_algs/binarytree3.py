@@ -54,7 +54,7 @@ class BinaryTreeNode3(BinaryTreeNode):
             if leftsize < k-1:
                 k -= (leftsize + 1)
                 curr = curr.right
-            elif leftsize is k-1:
+            elif leftsize == k-1:
                 return curr
             else:
                 curr = curr.left

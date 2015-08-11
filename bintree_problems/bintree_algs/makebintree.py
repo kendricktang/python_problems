@@ -18,7 +18,7 @@ def _makefromstring(node, s):
 
     # Set node.val
     children_ind = _getindexofvalue(s)
-    if children_ind is -1:
+    if children_ind == -1:
         # No children!
         node.val = int(s)
         return node
@@ -31,7 +31,7 @@ def _makefromstring(node, s):
     except TypeError:
         print s
 
-    if s[children_ind] is '[':
+    if s[children_ind] == '[':
         # There is no left child
         rightnode = node.setright(None)
         _makefromstring(rightnode, s[children_ind+1:ind_right-1])
@@ -52,9 +52,9 @@ def _getindexofvalue(s):
     round_ind = s.find('(')
     square_ind = s.find('[')
 
-    if round_ind is -1:
+    if round_ind == -1:
         return square_ind
-    if square_ind is -1:
+    if square_ind == -1:
         return round_ind
 
     return min(round_ind, square_ind)
@@ -66,11 +66,11 @@ def _getindicesofparens(s):
     rightcount = 0
     for ind in xrange(len(s)):
         c = s[ind]
-        if c is '(' or c is '[':
+        if c == '(' or c == '[':
             leftcount += 1
-        elif c is ')' or c is ']':
+        elif c == ')' or c == ']':
             rightcount += 1
-        if leftcount is rightcount:
+        if leftcount == rightcount:
             return ind + 1
 
 

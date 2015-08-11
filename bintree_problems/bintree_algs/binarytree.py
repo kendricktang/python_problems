@@ -45,7 +45,7 @@ class BinaryTreeNode(object):
         of its left child and the height of its right child differs by at most
         one."""
         height = BinaryTreeNode._isbalanced(self)
-        return height is not -1
+        return not height == -1
 
     @staticmethod
     def _isbalanced(node):
@@ -54,11 +54,11 @@ class BinaryTreeNode(object):
             return 0
 
         leftheight = BinaryTreeNode._isbalanced(node.left)
-        if leftheight is -1:
+        if leftheight == -1:
             return -1
 
         rightheight = BinaryTreeNode._isbalanced(node.right)
-        if rightheight is -1:
+        if rightheight == -1:
             return -1
 
         if abs(leftheight - rightheight) > 1:
@@ -108,7 +108,7 @@ class BinaryTreeNode(object):
 
         return (
             leftside and rightside and
-            leftside.val is rightside.val and
+            leftside.val == rightside.val and
             BinaryTreeNode._issymmetric(leftside.left, rightside.right) and
             BinaryTreeNode._issymmetric(leftside.right, rightside.left))
 
@@ -123,7 +123,7 @@ class BinaryTreeNode(object):
         if not curr:
             return None
 
-        if curr.val is val:
+        if curr.val == val:
             return curr
 
         leftres = BinaryTreeNode._findnode(curr.left, val)
