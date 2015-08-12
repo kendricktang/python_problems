@@ -12,10 +12,12 @@ def findproductionseq(string_dict, s, t):
 
     queue = deque()
     queue.append([s])
+    visited = set()
     while queue:
         path = queue.popleft()
         word = path[-1]
-        for nextword in _findnextwords(string_dict, word) - set(path):
+        for nextword in _findnextwords(string_dict, word) - visited:
+            visited.add(nextword)
             if nextword == t:
                 return path + [nextword]
             else:

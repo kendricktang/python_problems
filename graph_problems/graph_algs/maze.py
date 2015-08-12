@@ -6,6 +6,7 @@ class MazeSolver(object):
     def __init__(self, maze=[]):
         """Creates a new mazesolver object.
         It can be initialized with no maze."""
+        self.visited = set()
         if maze:
             self.changemaze(maze)
 
@@ -21,10 +22,12 @@ class MazeSolver(object):
         """Finds a path (if it exists), using DFS.
         Start and end must be coordinates."""
         stack = [[start]]
+        self.visited.clear()
         while stack:
             path = stack.pop()
             vertex = path[-1]
-            for nextvert in self.findneighbors(vertex) - set(path):
+            for nextvert in self.findneighbors(vertex) - self.visited:
+                self.visited.add(nextvert)
                 if nextvert == end:
                     return path + [nextvert]
                 else:
@@ -32,10 +35,9 @@ class MazeSolver(object):
 
     def findneighbors(self, vertex):
         neighbors = set()
-        for x, y in (
-                (vertex.x, vertex.y-1), (vertex.x, vertex.y+1),
-                (vertex.x-1, vertex.y), (vertex.x+1, vertex.y)):
-            newcoord = coordinate(x, y)
+        shift = ((0, -1), (0, 1), (-1, 0), (1, 0))
+        for x, y in shift:
+            newcoord = coordinate(vertex.x + x, vertex.y + y)
             if (self.validcoordinate(newcoord) and
                     self.maze[newcoord.x][newcoord.y]):
                 neighbors.add(newcoord)
@@ -90,4 +92,9 @@ if __name__ == '__main__':
     start = coordinate(9, 0)
     end = coordinate(0, 8)
     path = ms.solvemaze(start, end)
-    print path
+    print path  # Some path should exist
+
+    start = coordinate(9, 0)
+    end = coordinate(9, 9)
+    path = ms.solvemaze(start, end)
+    print path  # No path. Should be None.
