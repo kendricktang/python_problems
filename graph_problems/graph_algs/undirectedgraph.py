@@ -24,6 +24,8 @@ class UndirectedGraph(Graph):
         If the graph is not connected, the returned value describes the
         connectivity of the connected subgraph containing self._dict.keys()[0].
         """
+        if len(self._dict) < 2:
+            return True
 
         self.visited.clear()
         node = self._dict.keys()[0]
@@ -50,6 +52,8 @@ class UndirectedGraph(Graph):
         If the graph is not connected, the returned value describes the
         connectivity of the connected subgraph containing self._dict.keys()[0].
         """
+        if len(self._dict) < 2:
+            return True
 
         self.visited.clear()
         node = self._dict.keys()[0]
@@ -77,7 +81,7 @@ class UndirectedGraph(Graph):
             _edge = (edge[1], edge[0])
             if edge in edgeset:
                 edgeset.remove(edge)
-            elif _edge in edgeset:
+            if _edge in edgeset:
                 edgeset.remove(_edge)
 
     def _getedgesfrompath(self, path):

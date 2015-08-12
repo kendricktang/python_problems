@@ -21,6 +21,11 @@ class MazeSolver(object):
     def solvemaze(self, start, end):
         """Finds a path (if it exists), using DFS.
         Start and end must be coordinates."""
+        if not self.maze[start.x][start.y]:
+            return -1
+        if start == end:
+            return [start]
+
         stack = [[start]]
         self.visited.clear()
         while stack:
@@ -32,12 +37,13 @@ class MazeSolver(object):
                     return path + [nextvert]
                 else:
                     stack.append(path + [nextvert])
+        return -1
 
     def findneighbors(self, vertex):
         neighbors = set()
         shift = ((0, -1), (0, 1), (-1, 0), (1, 0))
         for x, y in shift:
-            newcoord = coordinate(vertex.x + x, vertex.y + y)
+            newcoord = Coordinate(vertex.x + x, vertex.y + y)
             if (self.validcoordinate(newcoord) and
                     self.maze[newcoord.x][newcoord.y]):
                 neighbors.add(newcoord)
@@ -50,11 +56,14 @@ class MazeSolver(object):
             coord.y >= 0 and coord.y < self.height)
 
 
-class coordinate(object):
+class Coordinate(object):
     """An object which represents a space in a maze."""
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+    def manhattandistance(self, other):
+        return abs(self.x - other.x) + abs(self.y - other.y)
 
     def __eq__(self, other):
         return (
@@ -62,7 +71,7 @@ class coordinate(object):
             self.y is other.y)
 
     def __ne__(self, other):
-        return self.__eq__(other)
+        return not self.__eq__(other)
 
     def __str__(self):
         return "(%d, %d)" % (self.x, self.y)
@@ -89,12 +98,12 @@ if __name__ == '__main__':
     ]
 
     ms = MazeSolver(maze=maze)
-    start = coordinate(9, 0)
-    end = coordinate(0, 8)
+    start = Coordinate(9, 0)
+    end = Coordinate(0, 8)
     path = ms.solvemaze(start, end)
     print path  # Some path should exist
 
-    start = coordinate(9, 0)
-    end = coordinate(9, 9)
+    start = Coordinate(9, 0)
+    end = Coordinate(9, 9)
     path = ms.solvemaze(start, end)
     print path  # No path. Should be None.

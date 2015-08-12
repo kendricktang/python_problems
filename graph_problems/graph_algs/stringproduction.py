@@ -10,6 +10,9 @@ def findproductionseq(string_dict, s, t):
     if s not in string_dict or t not in string_dict:
         return None
 
+    if s == t:
+        return [s]
+
     queue = deque()
     queue.append([s])
     visited = set()
@@ -48,4 +51,4 @@ if __name__ == "__main__":
         'but',
         'cut'
     ]
-    print findproductionseq(string_dict, 'cut', 'bbm')
+    print findproductionseq(string_dict, 'cut', 'cut')
