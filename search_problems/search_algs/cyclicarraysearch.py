@@ -12,6 +12,9 @@ def findstartcyclic(array):
             end = middle
         elif array[middle] > array[end]:
             start = middle + 1
+        else:
+            # array[start] <= array[middle] <= array[end]
+            return start
     return start
 
 
