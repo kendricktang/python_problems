@@ -4,17 +4,21 @@ class BinarySearchTree(Node):
     """A BST which does not contain duplicate keys."""
 
     def __init__(self):
-        """Initializes an empty BST, i.e. root = None."""
+        """Initializes an empty BST."""
         self.root = None
 
     def empty(self):
+        """Returns True if BST is empty. False otherwise."""
         return not self.root
 
     def clear(self):
+        """Recursively deletes a node's pointers to children and
+        the node iteself."""
         BinarySearchTree._clear(self.root)
 
     @staticmethod
     def _clear(node):
+        """Recursive helper for clear."""
         if node:
             BinarySearchTree._clear(node.left)
             BinarySearchTree._clear(node.right)
@@ -33,15 +37,15 @@ class BinarySearchTree(Node):
             curr = self.root
             while curr:
                 parent = curr
-                if curr == newnode:
+                if curr.key == key:
                     # Key already existed. No add is done.
                     return False
-                elif newnode < curr:
+                elif key < curr.key:
                     curr = curr.left
                 else:
                     curr = curr.right
 
-            if newnode < parent:
+            if key < parent.key:
                 parent.left = newnode
             else:
                 parent.right = newnode

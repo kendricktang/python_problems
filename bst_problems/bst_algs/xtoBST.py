@@ -30,6 +30,7 @@ def linkedlisttoBST(linkedlist):
 
 
 def _linkedlisttoBST(linkedlist, start, end):
+    """Recursive helper to build BST from a sorted linked list in O(n)."""
     if start < end:
         middle = (start + end) / 2
 

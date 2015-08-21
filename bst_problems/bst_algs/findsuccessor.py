@@ -29,10 +29,10 @@ if __name__ == "__main__":
         root.add(mynode, parent=True)
         successor = findsuccessor(mynode)
         bst = root.inordertraversal()
-        myind = bst.index(mynode)
+        myind = bst.index(mynode.key)
 
         if successor:
-            if successor != bst[myind + 1]:
+            if successor.key != bst[myind + 1]:
                 print "FAIL"
 
         else:

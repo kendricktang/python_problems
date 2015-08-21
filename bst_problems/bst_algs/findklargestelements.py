@@ -35,8 +35,9 @@ if __name__ == "__main__":
             key = random.randint(-1000, 1000)
             root.add(Node(key=key))
             array += [key]
-        if ind == 1:
-            k = 11
-            print findklargestelements(root, k)
-            array.sort(reverse=True)
-            print array[:k]
+
+        k = 11
+        myresults = findklargestelements(root, k)[0]
+        array.sort(reverse=True)
+        if myresults != array[:k]:
+            print "FAIL."

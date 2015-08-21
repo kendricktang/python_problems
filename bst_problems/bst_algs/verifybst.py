@@ -1,6 +1,5 @@
 def verifyBST(root):
     """Verifies whether a binary tree satisfies the BST property."""
-
     return _verifyBST(root, None, None)
 
 

@@ -8,7 +8,6 @@ class Node(object):
         """Constructs a BST node."""
         self.key = key
         self.parent = parent
-
         self.left = left
         self.right = right
 
@@ -37,15 +36,17 @@ class Node(object):
 
     @staticmethod
     def _inordertraversal(curr):
-        """Returns an array representing the in-order traversal of this tree."""
+        """Returns an array representing the in-order traversal of a tree."""
         if not curr:
             return []
         return (
             Node._inordertraversal(curr.left) +
-            [curr] + Node._inordertraversal(curr.right))
+            [curr.key] + Node._inordertraversal(curr.right))
 
     @staticmethod
     def replaceparentchildlink(parent, child, newnode):
+        """Replaces the link between a parent and a child with a new node.
+        If the child is not the child of parent, does nothing."""
         if not parent:
             return
 
@@ -61,6 +62,7 @@ class Node(object):
             return -1
         return 1 + max(Node.getheight(node.right), Node.getheight(node.left))
 
+"""
     def __str__(self):
         return str(self.key)
 
@@ -68,7 +70,6 @@ class Node(object):
         return str(self.key)
 
     def __eq__(self, other):
-        """Nodes are equal if their keys are equal."""
         return self.key == other.key
 
     def __lt__(self, other):
@@ -76,3 +77,4 @@ class Node(object):
 
     def __gt__(self, other):
         return self.key > other.key
+    """
