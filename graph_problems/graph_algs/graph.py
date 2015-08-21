@@ -91,26 +91,3 @@ class Graph(object):
                     return path + [nextvert]
                 else:
                     queue.append(path + [nextvert])
-
-
-if __name__ == "__main__":
-    g = Graph()
-    g.addpath('a', 'b')
-    g.addpath('b', 'e')
-    g.addpath('e', 'd')
-    g.addpath('d', 'c')
-    g.addpath('e', 'f')
-    g.addpath('e', 'h')
-    g.addpath('f', 'g')
-    g.addpath('f', 'i')
-    g.addpath('i', 'j')
-    g.addpath('i', 'm')
-    g.addpath('m', 'k')
-    g.addpath('k', 'l')
-
-    print g.depthfirstsearch('a')
-    print g.depthfirstsearch('c')
-    print g.depthfirstsearch_path('a', 'f')
-    print g.breadthfirstsearch('a')
-    print g.breadthfirstsearch_path('a', 'f')
-    print g.findallextendedcontacts()

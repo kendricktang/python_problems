@@ -80,29 +80,3 @@ class Coordinate(object):
 
     def __hash__(self):
         return hash(self.__repr__())
-
-
-if __name__ == '__main__':
-    maze = [
-        [0, 1, 1, 1, 1, 1, 0, 0, 1, 1],
-        [1, 1, 0, 1, 1, 1, 1, 1, 1, 1],
-        [0, 1, 0, 1, 1, 0, 0, 1, 0, 0],
-        [1, 1, 1, 0, 0, 0, 1, 1, 0, 1],
-        [1, 0, 0, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 0, 1, 1, 0, 1, 0, 0, 1],
-        [1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
-        [0, 1, 0, 1, 0, 1, 0, 1, 1, 1],
-        [0, 1, 0, 0, 1, 1, 1, 0, 0, 0],
-        [1, 1, 1, 1, 1, 1, 1, 0, 0, 1],
-    ]
-
-    ms = MazeSolver(maze=maze)
-    start = Coordinate(9, 0)
-    end = Coordinate(0, 8)
-    path = ms.solvemaze(start, end)
-    print path  # Some path should exist
-
-    start = Coordinate(9, 0)
-    end = Coordinate(9, 9)
-    path = ms.solvemaze(start, end)
-    print path  # No path. Should be None.

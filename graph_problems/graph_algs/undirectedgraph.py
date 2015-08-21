@@ -94,32 +94,3 @@ class UndirectedGraph(Graph):
         # Using DFS-like algorith, determine the connected parts of the graph
         # For each inequality, make sure the two elements are disconnected.
         pass
-
-
-if __name__ == "__main__":
-    g = UndirectedGraph()
-    g.addpath('a', 'b')
-    g.addpath('b', 'e')
-    g.addpath('e', 'd')
-    g.addpath('d', 'c')
-    g.addpath('e', 'f')
-    g.addpath('e', 'h')
-    g.addpath('f', 'g')
-    g.addpath('f', 'i')
-    g.addpath('i', 'j')
-    g.addpath('i', 'm')
-    g.addpath('m', 'k')
-    g.addpath('k', 'l')
-    print g.checkconnectivity_2A()  # False
-    print g.checkconnectivity_2E()  # False
-
-    g.addpath('g', 'h')
-    print g.checkconnectivity_2A()  # False
-    print g.checkconnectivity_2E()  # True
-
-    g.addpath('h', 'i')
-    g.addpath('a', 'c')
-    g.addpath('i', 'l')
-    g.addpath('j', 'k')
-    g.addpath('b', 'd')
-    print g.checkconnectivity_2A()  # True

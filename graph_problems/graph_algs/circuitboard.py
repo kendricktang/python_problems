@@ -27,18 +27,3 @@ def isdivisible(pins, wirecons):
                 # the pins are on the same PCB when they shouldn't be.
                 return False
     return True
-
-
-"""0, 9, 14"""
-if __name__ == "__main__":
-    pins = set(xrange(22))
-    wirecons = set(
-        [
-            (0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8),
-            (0, 9), (1, 10), (2, 11), (3, 12), (12, 5), (5, 13), (13, 7),
-            (9, 10), (10, 11), (11, 12),
-            (9, 14), (10, 15), (11, 16), (12, 17), (13, 19), (13, 21),
-            (14, 15), (15, 16), (16, 17), (17, 18), (18, 19), (19, 20), (20, 21)
-        ]
-    )
-    print isdivisible(pins, wirecons)  # True.

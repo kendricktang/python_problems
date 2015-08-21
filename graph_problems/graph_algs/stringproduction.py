@@ -38,17 +38,3 @@ def _findnextwords(string_dict, word):
             if newword in string_dict:
                 newwords.add(newword)
     return newwords
-
-
-if __name__ == "__main__":
-    string_dict = [
-        'cat',
-        'bat',
-        'bbt',
-        'bbm',
-        'bam',
-        'bum',
-        'but',
-        'cut'
-    ]
-    print findproductionseq(string_dict, 'cut', 'cut')
