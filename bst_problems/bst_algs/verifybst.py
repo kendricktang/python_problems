@@ -17,20 +17,3 @@ def _verifyBST(root, minkey, maxkey):
         return (
             _verifyBST(root.left, minkey, root.key) and
              _verifyBST(root.right, root.key, maxkey))
-
-
-if __name__ == "__main__":
-    from node import Node
-    from numpy import random as rand
-    rand.seed(0)
-    testsize = 100
-    for ind in xrange(testsize):
-        """Test when this the tree is not a real BST."""
-        size = rand.randint(50)
-        root = Node(key=rand.randint(-50, 50))
-        for ind in xrange(size):
-            root.add(Node(rand.randint(-10, 10)))
-        if not verifyBST(root):
-            print "FAIL"
-
-    # Needs a way to verify no false positives.

@@ -2,7 +2,7 @@ def findk(root, k):
     """Root is a min-first BST, i.e. root.val is less than all keys,
     and all keys in the left tree are less than all keys in the right tree.
 
-    Returns True if k is in the tree."""
+    Returns True if k is in the tree. Otherwise returns False or None"""
     if not root:
         return False
     if root.key == k:
@@ -22,25 +22,3 @@ def findk(root, k):
             curr = curr.left
 
     return curr and curr.key == k
-
-
-if __name__ == "__main__":
-    # Textbook example:
-    from node import Node
-    i = Node(key=23)
-    h = Node(key=19, left=i)
-    g = Node(key=17)
-    c = Node(key=13, left=g, right=h)
-
-
-    e = Node(key=7)
-    f = Node(key=11)
-    d = Node(key=5, left=e, right=f)
-    b = Node(key=3, right=d)
-
-    a = Node(key=2, left=b, right=c)
-
-    if not findk(a, 5):
-        print "Fail"
-    if findk(a, 15):
-        print "Fail"

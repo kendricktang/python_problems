@@ -1,8 +1,10 @@
+
 class Node(object):
     """A binary search tree node object. The nodes will have a value, in
     addition to multiple pointers (e.g. parent) or parameters (e.g. size).
     Not all of which will be used everytime, but I don't want to make a
-    different Node class for each problem."""
+    different Node class for each problem.
+    """
 
     def __init__(self, key=None, parent=None, left=None, right=None):
         """Constructs a BST node."""
