@@ -16,4 +16,4 @@ def _verifyBST(root, minkey, maxkey):
     else:
         return (
             _verifyBST(root.left, minkey, root.key) and
-             _verifyBST(root.right, root.key, maxkey))
+            _verifyBST(root.right, root.key, maxkey))

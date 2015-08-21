@@ -1,5 +1,6 @@
 from node import Node
 
+
 class BinarySearchTree(Node):
     """A BST which does not contain duplicate keys."""
 
