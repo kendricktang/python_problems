@@ -6,7 +6,6 @@ class MazeSolver(object):
     def __init__(self, maze=[]):
         """Creates a new mazesolver object.
         It can be initialized with no maze."""
-        self.visited = set()
         if maze:
             self.changemaze(maze)
 
@@ -27,12 +26,12 @@ class MazeSolver(object):
             return [start]
 
         stack = [[start]]
-        self.visited.clear()
+        visited = set()
         while stack:
             path = stack.pop()
             vertex = path[-1]
-            for nextvert in self.findneighbors(vertex) - self.visited:
-                self.visited.add(nextvert)
+            for nextvert in self.findneighbors(vertex) - visited:
+                visited.add(nextvert)
                 if nextvert == end:
                     return path + [nextvert]
                 else:

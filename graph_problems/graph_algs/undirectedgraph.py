@@ -27,7 +27,6 @@ class UndirectedGraph(Graph):
         if len(self._dict) < 2:
             return True
 
-        self.visited.clear()
         node = self._dict.keys()[0]
         stack = [[node]]
 
@@ -55,7 +54,6 @@ class UndirectedGraph(Graph):
         if len(self._dict) < 2:
             return True
 
-        self.visited.clear()
         node = self._dict.keys()[0]
         stack = [[node]]
         edgeset = self.getedges()

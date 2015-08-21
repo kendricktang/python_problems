@@ -7,19 +7,17 @@ class Graph(object):
     def __init__(self):
         """Creates an empty graph."""
         self._dict = defaultdict(set)
-        self.visited = set()
 
     def getdict(self):
         """Returns the dictionary that contains the structure of the graph."""
         return self._dict
 
     def getedges(self):
-        """O(V+E) way of getting the set of edges."""
-        edges = set()
-        for vert in self._dict.keys():
-            for neighbor in self._dict[vert]:
-                edges.add((vert, neighbor))
-        return edges
+        """Returns the set of edges."""
+        return set(
+            [(vert, neighbor) for vert in self._dict.keys()
+                for neighbor in self._dict[vert]]
+        )
 
     def addnode(self, val):
         """If the node doesn't already exist, it creates a new one with no paths.
@@ -39,32 +37,29 @@ class Graph(object):
             self._dict[a].remove(b)
 
     def findallextendedcontacts(self):
-        """Returns a dictionary of keys and their extended contacts.
-        A node is always its own contact."""
-        extendedcontacts = {}
-        for key in self._dict.keys():
-            extendedcontacts[key] = list(self.depthfirstsearch(key))
-        return extendedcontacts
+        """Returns a dictionary of keys and their extended contacts."""
+        return {
+            key: self.depthfirstsearch(key) for key in self._dict.keys()}
 
     def depthfirstsearch(self, a, visited=None):
         """A depth first search from a."""
         if not visited:
-            visited = self.visited
-            visited.clear()
+            visited = set()
         visited.add(a)
         for vert in self._dict[a] - visited:
             self.depthfirstsearch(vert, visited)
+
         return visited
 
     def depthfirstsearch_path(self, a, b):
         """Uses DFS to find a path from a to b."""
         stack = [[a]]
-        self.visited.clear()
+        visited = set()
         while stack:
             path = stack.pop()
             vertex = path[-1]
-            for nextvert in self._dict[vertex] - self.visited:
-                self.visited.add(nextvert)
+            for nextvert in self._dict[vertex] - visited:
+                visited.add(nextvert)
                 if nextvert == b:
                     return path + [nextvert]
                 else:
@@ -72,26 +67,26 @@ class Graph(object):
 
     def breadthfirstsearch(self, a):
         """Breadth first search from a."""
-        self.visited.clear()
+        visited = set()
         queue = deque()
         queue.append(a)
         while queue:
             vertex = queue.popleft()
-            if vertex not in self.visited:
-                self.visited.add(vertex)
-                queue.extend(self._dict[vertex] - self.visited)
-        return self.visited
+            if vertex not in visited:
+                visited.add(vertex)
+                queue.extend(self._dict[vertex] - visited)
+        return visited
 
     def breadthfirstsearch_path(self, a, b):
         """Uses BFS to find shorted path from a to b."""
         queue = deque()
         queue.append([a])
-        self.visited.clear()
+        visited = set()
         while queue:
             path = queue.popleft()
             vertex = path[-1]
-            for nextvert in self._dict[vertex] - self.visited:
-                self.visited.add(nextvert)
+            for nextvert in self._dict[vertex] - visited:
+                visited.add(nextvert)
                 if nextvert == b:
                     return path + [nextvert]
                 else:

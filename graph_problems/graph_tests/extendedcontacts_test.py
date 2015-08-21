@@ -10,7 +10,7 @@ class TestFindExtendedContacts(unittest.TestCase):
         g = Graph()
         g.addnode("z")
         extendedcontacts = g.findallextendedcontacts()
-        self.assertEqual(extendedcontacts["z"], ["z"])
+        self.assertEqual(extendedcontacts["z"], set(["z"]))
 
     def test_cycliccase(self):
         """Simple cyclic directional graph."""
@@ -19,9 +19,9 @@ class TestFindExtendedContacts(unittest.TestCase):
         g.addpath("s", "t")
         g.addpath("t", "r")
         extendedcontacts = g.findallextendedcontacts()
-        self.assertEqual(set(extendedcontacts["r"]), set(["r", "s", "t"]))
-        self.assertEqual(set(extendedcontacts["s"]), set(["s", "t", "r"]))
-        self.assertEqual(set(extendedcontacts["t"]), set(["r", "s", "t"]))
+        self.assertEqual(extendedcontacts["r"], set(["r", "s", "t"]))
+        self.assertEqual(extendedcontacts["s"], set(["s", "t", "r"]))
+        self.assertEqual(extendedcontacts["t"], set(["r", "s", "t"]))
 
     def test_disconnectedcase(self):
         """A graph made of two connected subgraphs."""
@@ -39,17 +39,18 @@ class TestFindExtendedContacts(unittest.TestCase):
         g.addpath("m", "k")
         g.addpath("k", "l")
         extendedcontacts = g.findallextendedcontacts()
+
         self.assertEqual(
-            set(extendedcontacts["a"]),
+            extendedcontacts["a"],
             set(["a", "b", "d", "c", "e", "f", "h", "f"]))
         self.assertEqual(
-            set(extendedcontacts["g"]),
+            extendedcontacts["g"],
             set(["g", "c"]))
         self.assertEqual(
-            set(extendedcontacts["i"]),
+            extendedcontacts["i"],
             set(["i", "j", "m", "k", "l"]))
         self.assertEqual(
-            set(extendedcontacts["m"]),
+            extendedcontacts["m"],
             set(["m", "k", "l"]))
 
 
