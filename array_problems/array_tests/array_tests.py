@@ -3,6 +3,7 @@ from algs.array_funcs import *
 from random import randint
 import numpy as np
 
+
 def maketestarray(size,range='default',n=0):
     if type(size)==type(int()):
         size=[size]
@@ -12,6 +13,7 @@ def maketestarray(size,range='default',n=0):
         return np.random.randint(-10*sum(size),high=10*sum(size),size=size)
     if range=='bool':
         return np.random.randint(2,size=size)
+
 
 def test_maxdiff():
     test1=[5,4,3,2,1,0,-1,-2,-3,-4,-5] # should return 0
@@ -25,7 +27,8 @@ def test_maxdiff():
         assert_equal(answer,maxdiff_bruteforce(test))
         assert_equal(answer,maxdiff_merge(test))
         assert_equal(answer,maxdiff_fast(test))
-    
+
+
 def test_maxdiff_2():
     test1=[5,4,3,2,1,0,-1,-2,-3,-4,-5] # should return 0
     test2=[0,1,2,3,4,5,6,7,8,9,10] # should return 10
@@ -39,6 +42,7 @@ def test_maxdiff_2():
         assert_equal(answer,maxdiff_2_bruteforce(test))
         assert_equal(answer,maxdiff_2_fast(test))
 
+
 def test_increasing_subarray():
     test1=np.array([0]) # should return [0,0]
     test2=np.array([0,0,1,2,3,4,5,5]) # should return [1,6]
@@ -51,6 +55,7 @@ def test_increasing_subarray():
         assert_equal(longest_increasing_subarray(test),answer)
         assert_equal(longest_increasing_subarray_(test),answer)
 
+
 def test_weak_equivalence():
     n=10
     A=[3,6,3,2,9,4]
@@ -58,20 +63,21 @@ def test_weak_equivalence():
     answer=[0,1,2,2,4,5,2,4,2,2]
     assert_equal(weak_equivalence(n,A,B).tolist(),answer)
     assert_equal(weak_equivalence_(n,A,B).tolist(),answer)
-    
+
     n=10
     A=[]
     B=[]
     answer=[0,1,2,3,4,5,6,7,8,9]
     assert_equal(weak_equivalence(n,A,B).tolist(),answer)
     assert_equal(weak_equivalence_(n,A,B).tolist(),answer)
-    
+
     n=10
     A=[1,4,5,7,7,0]
     B=[2,3,2,6,2,9]
     answer=[0,1,1,3,3,1,1,1,8,0]
     assert_equal(weak_equivalence(n,A,B).tolist(),answer)
     assert_equal(weak_equivalence_(n,A,B).tolist(),answer)
+
 
 def test_reversearray():
     for i in xrange(100):
@@ -80,6 +86,7 @@ def test_reversearray():
         print reversed
         for i in xrange(len(test)):
             assert_equal(test[i], reversed[len(test)-1-i])
+
 
 def test_rotatearray():
     for i in xrange(100):
@@ -92,101 +99,6 @@ def test_rotatearray():
         print rotated
         for i in xrange(len(test)):
             assert_equal(test[i], rotated[(i+shift_amt)%size])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

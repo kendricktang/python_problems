@@ -1,5 +1,6 @@
 import unittest
-from array_algs.maxdiff import maxdiff, maxdiff_2, maxdiff_k
+from array_algs.maxdiff import maxdiff, maxdiff_2
+
 
 class TestMaxDiff(unittest.TestCase):
     """Test suite for maxdiff method"""
@@ -20,8 +21,10 @@ class TestMaxDiff(unittest.TestCase):
         self.assertEqual(maxdiff(lst), 10)
 
     def test_random(self):
-        lst = [-10, -3, -6, 3, 3, -10, 5, 7, 6, 6, -4, -7, -8, -8, -9, 0, 8, 1, 7]
+        lst = [
+            -10, -3, -6, 3, 3, -10, 5, 7, 6, 6, -4, -7, -8, -8, -9, 0, 8, 1, 7]
         self.assertEqual(maxdiff(lst), 18)
+
 
 class TestMaxDiff_2(unittest.TestCase):
     """Test suite for maxdiff_2 method"""
@@ -42,7 +45,8 @@ class TestMaxDiff_2(unittest.TestCase):
         self.assertEqual(maxdiff_2(lst), 10)
 
     def test_random(self):
-        lst = [-10, -3, -6, 3, 3, -10, 5, 7, 6, 6, -4, -7, -8, -8, -9, 0, 8, 1, 7]
+        lst = [
+            -10, -3, -6, 3, 3, -10, 5, 7, 6, 6, -4, -7, -8, -8, -9, 0, 8, 1, 7]
         self.assertEqual(maxdiff_2(lst), 34)
 
 if __name__ == '__main__':
