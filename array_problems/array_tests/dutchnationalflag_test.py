@@ -48,6 +48,8 @@ class TestDutchNationalFlag(unittest.TestCase):
 
 def is_sorted(array):
     """Checks to see if an array is sorted"""
+    if array:
+        return True
     return any(array[i] <= array[i+1] for i in xrange(len(array)-1))
 
 if __name__ == '__main__':
