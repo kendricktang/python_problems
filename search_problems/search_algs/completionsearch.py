@@ -25,11 +25,3 @@ def partialsum(array):
         val = array[index]
         psum += val
         yield psum, index
-
-
-if __name__ == "__main__":
-    array = [90, 30, 100, 40, 20]
-    if not 60 == completionsearch(array, 210):
-        print "FAIL"
-    else:
-        print "PASS"

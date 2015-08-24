@@ -45,19 +45,3 @@ def findindexequalsvalue(array):
         else:
             end = middle - 1
     return -1
-
-
-if __name__ == "__main__":
-    array = [-14, -10, 2, 108, 108, 243, 285, 285, 285, 401]
-    if not array.index(108) == findfirstoccurrence(array, 108):
-        print "FAIL"
-    elif not array.index(285) == findfirstoccurrence(array, 285):
-        print "FAIL"
-    elif not array.index(401) == findfirstoccurrence(array, 401):
-        print "FAIL"
-    elif not 5 == findfirstelementgreaterthan(array, 108):
-        print "FAIL"
-    elif not 2 == findindexequalsvalue(array):
-        print "FAIL"
-    else:
-        print "PASS"

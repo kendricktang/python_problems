@@ -27,21 +27,3 @@ def getminmaxpair(a, b):
         return a, b
     else:
         return b, a
-
-
-if __name__ == "__main__":
-    import numpy as np
-    passed = True
-    for ind in xrange(100):
-        array = np.random.randint(-50, 50, 1000)
-        testmin, testmax = findminmax(array)
-        confmin = min(array)
-        confmax = max(array)
-        if testmin != confmin:
-            print "Didn't find min."
-            passed = False
-        if testmax != confmax:
-            print "Didn't find max."
-            passed = False
-    if passed:
-        print "PASS"

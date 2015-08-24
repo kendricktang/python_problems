@@ -26,13 +26,3 @@ def findnextval(array, func):
             yield index
         index -= 1
     yield -1
-
-
-if __name__ == "__main__":
-    array = [-49, 75, 103, -147, 164, -197, -238, 314, 348, -422]
-    if not [3, 7] == findpairsum(array, 167):
-        print "FAIL"
-    elif not [-1, -1] == findpairsum(array, 0):
-        print "FAIL"
-    else:
-        print "PASS"

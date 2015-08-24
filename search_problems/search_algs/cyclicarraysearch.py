@@ -46,15 +46,3 @@ def findincyclic(array, k):
                 # k is not within this sorted half. Check the other half.
                 end = middle
     return -1
-
-
-if __name__ == "__main__":
-    array = [378, 478, 550, 631, 103, 203, 220, 234, 279, 368]
-    if not 4 == findstartcyclic(array):
-        print "FAIL"
-    elif not 0 == findincyclic(array, 378):
-        print "FAIL"
-    elif not 9 == findincyclic(array, 368):
-        print "FAIL"
-    else:
-        print "PASS"
